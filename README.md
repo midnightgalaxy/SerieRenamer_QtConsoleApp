@@ -1,0 +1,1 @@
+#SerieRenamer_QtConsoleApp
