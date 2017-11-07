@@ -47,9 +47,9 @@ int main(int argc, char *argv[])
         input;
         std::cin >> input;
     }
-    if (input == 'n')       // exists application
+    if (input == 'n') { // exists application
         return 0;
-
+    }
     else {  // if y then execute operation...
 
         QDir workPath(path.c_str());
@@ -60,31 +60,13 @@ int main(int argc, char *argv[])
             while (it.hasNext())
             {
                 QFileInfo tmp(it.next());
-                //qDebug() << tmp.fileName() << "is file: " << tmp.isFile() << " ";
-                //qDebug() << "absolut file path: " << tmp.absoluteFilePath() << "\n";
+
                 if (tmp.isFile()) {
                     QFile tmp2 (tmp.absoluteFilePath());
-
-                    /*
-                    std::string fileRename;
-                    fileRename += name;
-                    fileRename += ".";
-                    fileRename += season;
-                    fileRename += "E";
-                    if (episodeCount <= 9)
-                        fileRename += "0";
-                    fileRename += std::to_string(episodeCount);
-                    fileRename += ".";
-                    fileRename += extra;
-                    fileRename += ".";
-                    fileRename += fileType;
-                    */
-
 
                     QString fileRename;
                     fileRename.append(tmp.absolutePath());
                     fileRename.append("/");
-
                     fileRename.append(name.c_str());
                     fileRename.append(".");
                     fileRename.append(season.c_str());
@@ -97,28 +79,16 @@ int main(int argc, char *argv[])
                     fileRename.append(".");
                     fileRename.append(fileType.c_str());
 
-
-
-                    /*
-                    std::string absolutPathfileRename;
-                    //absolutPathfileRename = tmp.absoluteFilePath().toStdString();     // full with file name
-                    absolutPathfileRename = tmp.absolutePath().toStdString();           // only dir
-                    //absolutPathfileRename += "\\";
-                    //absolutPathfileRename += fileRename;
-                    */
-
-                    qDebug() << "Renamed: "; //<< tmp.absoluteFilePath(); << "\n";      // VARFÖR FUNKAR INTE DETTA!? ANNARS FUNKAR ALLT!!! STÄDA KODEN
-                    tmp2.rename(fileRename);   // TODO: PROBLEMET ÄR ATT JAG MÅSTE HA MED HELA ADRESSEN TILL FILEN....
-
-
+                    std::cout << "Renamed: " << tmp.absoluteFilePath().toStdString() << "\n";
+                    tmp2.rename(fileRename);
 
                     episodeCount++;
                 }
             }
+            std::cout << "\nDone!";
+        } else {
+            std::cout << "\nWorkpath didn't existed!";
         }
-
-        std::cout << "\nDone!";
     }
-
     return a.exec();
 }
