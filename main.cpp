@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     std::string extra;
     std::string fileType;
 
-    std::cout << "Enter path (like \"C:\\Users\\Johan\\Desktop\\Dexter\\Season_1\", NO blancs!): ";
+    std::cout << "Enter path (like \"C:\\Users\\Johan\\Desktop\\Dexter\\Season_1\", NO blanks!): ";
     std::cin >> path;
     std::cout << "Enter name of the serie (dot notation please): ";
     std::cin >> name;
